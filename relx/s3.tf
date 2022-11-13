@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "relxAutomation" {
-  bucket = "relxautomation1"
+  bucket = var.bucketname
   #acl = "private"
   acl = "public-read"
   # versioning {
