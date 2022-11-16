@@ -36,12 +36,20 @@ EOF
 
 }
 
-resource "aws_s3_bucket_object" "relxAutomation-object" {
-  for_each = fileset(path.module, "**/*.html")
+# resource "aws_s3_bucket_object" "relxAutomation-object" {
+#   for_each = fileset(path.module, "**/*.html")
+#   bucket   = aws_s3_bucket.relxAutomation.id
+#   key      = each.value
+#   source   = "${path.module}/${each.value}"
+#   #source = "/Users/rahul/Desktop/relx/index.html"
+
   bucket   = aws_s3_bucket.relxAutomation.id
-  key      = each.value
-  source   = "${path.module}/${each.value}"
-  #source = "/Users/rahul/Desktop/relx/index.html"
+  #key      = each.value
+  key = "index.html"
+  #source   = "${path.module}/${each.value}"
+  source = "index.html"
+  content_type = "text/html"
+
 
 }
 
